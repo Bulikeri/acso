@@ -11,10 +11,12 @@ loader.o: loader.asm
 
 kernel.bin: kernel.elf
 		objcopy -R .note -R .comment -S -O binary kernel.elf kernel.bin
+cmd.o:
+	gcc -m32 -ffreestanding -fno-builtin -nostdlib -c cmd/*.c
 
-kernel.elf: loader.o kmain.c
+kernel.elf: loader.o kmain.c cmd.o
 		gcc -m32  -ffreestanding -fno-builtin -nostdlib -c kmain.c
-		ld -melf_i386 -Ttext 0x1000 -o kernel.elf loader.o kmain.o
+		ld -melf_i386 -Ttext 0x1000 -o kernel.elf loader.o kmain.o cmd_*.o
 
 boot.bin: boot.asm
 		nasm -f bin boot.asm -o boot.bin
