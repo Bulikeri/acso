@@ -1,6 +1,8 @@
 #include "lib/io.c"
 #include "lib/kbd.c"
 #include "lib/video.c"
+#include "lib/longjmp.c"
+
 int strcmp(char *s1,char *s2)
 {
 int i = 0,c = 0;
