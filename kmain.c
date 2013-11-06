@@ -4,13 +4,16 @@
 
 int main( void )
 {
-putc ('H');
-putc ('e');
-putc ('l');
-putc ('l');
-putc ('o');
-
-for(;;);
+ char a[1000];
+ puts ("welcome to OS \n");
+ for (;;)
+   {
+    puts("\n");
+    puts("$:");
+    gets(a);
+    clrscr();
+    puts(a);
+    }
 
 }
 
